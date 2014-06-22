@@ -4,9 +4,9 @@ import javax.swing.JWindow;
 
 /**
  * 
- * @author Shane
- * This is the notifications windows, what you see. 
+ * @author Shane This is the notifications windows, what you see.
  */
-public class STNotificationWindow extends JWindow {
+public class STNotificationWindow extends JWindow
+{
 
 }
