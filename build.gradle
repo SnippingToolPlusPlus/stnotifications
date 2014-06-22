@@ -52,7 +52,7 @@ jacocoTestReport {
     additionalSourceDirs = files("src/main/java")
     reports {
         xml.enabled true
-        xml.destination "${buildDir}/reports/xmlunittest"
+        xml.destination "${buildDir}/reports/xml/test.xml"
         csv.enabled false
         html.destination "${buildDir}/reports/coverage"
     }
