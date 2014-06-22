@@ -1,9 +1,11 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'jacoco'
+apply plugin: 'maven'
 
 sourceCompatibility = 1.7
-version = '1.0.0'
+project.version = '1.0.0'
+
 jar {
 
 	from {
@@ -13,13 +15,13 @@ jar {
     
     manifest {
         attributes ('Main-Class': 'us.snippingtoolpluspl.notifications.DemoApp',
-                    'Application-Version': version,
+                    'Application-Version': project.version,
                     'Author': 'http://snippingtoolpluspl.us',
                     'Built-By': System.getProperty("user.name"),
                     'Built-On': new Date().toString())
     }
     
-    archiveName = project.name + '-' + version + '.jar'
+    archiveName = project.name + '-' + project.version + '.jar'
 }
 
 repositories {
@@ -59,6 +61,14 @@ uploadArchives {
        flatDir {
            dirs 'repos'
        }
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.version = project.version
+        pom.artifactId = project.name
+        pom.groupId = 'us.snippingtoolpluspl'
     }
 }
 
