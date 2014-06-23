@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'jacoco'
 apply plugin: 'maven'
+apply plugin: 'sonar-runner'
 
 sourceCompatibility = 1.7
 project.version = '1.0.0'
@@ -76,4 +77,14 @@ install {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.12'
+}
+
+sonarRunner {
+    sonarProperties {
+        property "sonar.host.url", "http://sonar.snippingtoolpluspl.us"
+        property "sonar.jdbc.url", "jdbc:mysql://localhost:3306/sonar"
+        property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver"
+        property "sonar.jdbc.username", "sonar"
+        property "sonar.jdbc.password", "$System.env.SONAR_PASSWORD"
+    }
 }
