@@ -4,11 +4,9 @@ import javax.swing.JOptionPane;
 
 public class DemoApp
 {
+    STNotificationButton[] buttons = new STNotificationButton[3];
     public DemoApp()
-    {
-        System.out.println("World");
-        JOptionPane.showMessageDialog(null, "This was a triumph");
-        
+    {   
         /**
          * What it might look like, a STNotificationButton array would be sent in where null is
          * and then added to the window. The buttons would be created by the user and given 
@@ -32,11 +30,16 @@ public class DemoApp
          */
         //STNoticationQueue notificationQueue = new STNotificationQueue();
         //	notificationQueue.add(someNotification);
+        
+        for(int i = 0; i < 3; i++)
+        {
+            buttons[i] = new STNotificationButton(0, "Button "+i);
+        }
+        new STNotification("TITLE TEXT", "This is a sample message that could really be anything", buttons, STNotificationType.SUCCESS);
     }
 
     public static void main(String[] args)
     {
-        System.out.println("Hello");
         new DemoApp();
     }
 }

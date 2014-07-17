@@ -7,5 +7,5 @@ package us.snippingtoolpluspl.notifications;
  */
 public enum STNotificationType
 {
-    INFO, MESSAGE, WARNING, ERROR
+    INFO, MESSAGE, WARNING, ERROR, SUCCESS
 }
