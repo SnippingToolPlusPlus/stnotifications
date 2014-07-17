@@ -1,5 +1,7 @@
 package us.snippingtoolpluspl.notifications;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -7,6 +9,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  * 
@@ -20,14 +24,15 @@ public class STNotificationButton extends JComponent implements MouseListener
     private int type;
     private String text;
     
-    
     private String texturePath = STTheme.getThemeRootPath();
     
     private Image hover; 
     private Image normal;
     private Image pressed;
-    
     private Image current;
+    
+    private JPanel titlePanel;
+    private JLabel title;
     
     public STNotificationButton(int type, String text)
     {
@@ -38,10 +43,10 @@ public class STNotificationButton extends JComponent implements MouseListener
         {
         case ACTIVE:
             texturePath += "button/";
-            setSize(STTheme.getThemeButtonWidth(), STTheme.getThemeButtonHeight());
+            this.setSize(STTheme.getThemeButtonWidth(), STTheme.getThemeButtonHeight());
             break;
         case CLOSE:
-            setSize(STTheme.getThemeCloseWidth(), STTheme.getThemeCloseHeight());
+            this.setSize(STTheme.getThemeCloseWidth(), STTheme.getThemeCloseHeight());
             texturePath += "close/";
             break;
         }
@@ -53,6 +58,13 @@ public class STNotificationButton extends JComponent implements MouseListener
         
         enableInputMethods(true);
         addMouseListener(this);
+        
+        titlePanel = new JPanel(new BorderLayout());
+        titlePanel.setBackground(new Color(0,0,0,0));
+        title = new JLabel(text);
+        
+        titlePanel.add(title, BorderLayout.CENTER);
+        this.add(titlePanel);
         this.setVisible(true);
         
     }
@@ -60,11 +72,8 @@ public class STNotificationButton extends JComponent implements MouseListener
     {
         super.paintComponent(g);
         g.drawImage(current, 0, 0, this);
-       // repaint();
-    }
-    public void setPosition(int x, int y)
-    {
-        this.setLocation(x, y);
+        repaint();
+        g.dispose();
     }
     @Override
     public void mouseClicked(MouseEvent arg0)

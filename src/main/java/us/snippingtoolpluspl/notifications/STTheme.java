@@ -38,6 +38,18 @@ public class STTheme
     {
         return 20;
     }
+    public static int getButtonMarginLeft()
+    {
+        return 30;
+    }
+    public static int getButtonMargin()
+    {
+        return 5;
+    }
+    public static int getButtonWindowHeight()
+    {
+        return 75;
+    }
     public static int getThemeCloseWidth()
     {
         return 20;

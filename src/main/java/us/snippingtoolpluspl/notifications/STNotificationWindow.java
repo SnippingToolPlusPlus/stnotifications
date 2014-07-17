@@ -5,13 +5,16 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
 
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
  * 
  * @author Shane This is the notifications windows, what you see.
  */
-public class STNotificationWindow extends JPanel
+public class STNotificationWindow extends JComponent
 {
     private String texturePath = STTheme.getThemeRootPath() + "/window/";
     private String typePath = STTheme.getThemeRootPath() + "/type/";
@@ -19,6 +22,8 @@ public class STNotificationWindow extends JPanel
     private Image texture;
     private Image type;
 
+    private ImageIcon icon;
+    
     public STNotificationWindow(STNotificationType t, boolean buttons)
     {
         if (buttons == false)
@@ -48,7 +53,7 @@ public class STNotificationWindow extends JPanel
         }
         texture = Toolkit.getDefaultToolkit().getImage(texturePath);
         type = Toolkit.getDefaultToolkit().getImage(typePath);
-
+        
         this.setSize(STTheme.getThemeWidth(), STTheme.getThemeHeight());
         this.setVisible(true);
     }
@@ -59,7 +64,6 @@ public class STNotificationWindow extends JPanel
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(texture, 0, 0, this);
         g2d.drawImage(type, 0, 0, this);
-        repaint();
         g2d.dispose();
     }
 }
