@@ -3,9 +3,13 @@ package us.snippingtoolpluspl.notifications;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  * 
@@ -19,7 +23,7 @@ public class STNotificationButton extends JButton
     private int type;
     private String text;
     
-    private String texturePath = STTheme.getThemeRootPath();
+    private String texturePath = STTheme.getRootPath();
     
     private ImageIcon hover; 
     private ImageIcon normal;
@@ -34,10 +38,10 @@ public class STNotificationButton extends JButton
         {
         case ACTIVE:
             texturePath += "button/";
-            this.setSize(STTheme.getThemeButtonWidth(), STTheme.getThemeButtonHeight());
+            this.setSize(STTheme.getButtonWidth(), STTheme.getButtonHeight());
             break;
         case CLOSE:
-            this.setSize(STTheme.getThemeCloseWidth(), STTheme.getThemeCloseHeight());
+            this.setSize(STTheme.getCloseWidth(), STTheme.getCloseHeight());
             texturePath += "close/";
             break;
         }
@@ -67,7 +71,7 @@ public class STNotificationButton extends JButton
         setVisible(true);
         repaint();
     }
-    public void paintComponent(Graphics g)
+    public void paintComponents(Graphics g)
     {
         super.paintComponent(g);
         repaint();

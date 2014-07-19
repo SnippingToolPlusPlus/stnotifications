@@ -16,8 +16,8 @@ import javax.swing.JPanel;
  */
 public class STNotificationWindow extends JComponent
 {
-    private String texturePath = STTheme.getThemeRootPath() + "/window/";
-    private String typePath = STTheme.getThemeRootPath() + "/type/";
+    private String texturePath = STTheme.getRootPath() + "/window/";
+    private String typePath = STTheme.getRootPath() + "/type/";
 
     private Image texture;
     private Image type;
@@ -54,7 +54,7 @@ public class STNotificationWindow extends JComponent
         texture = Toolkit.getDefaultToolkit().getImage(texturePath);
         type = Toolkit.getDefaultToolkit().getImage(typePath);
         
-        this.setSize(STTheme.getThemeWidth(), STTheme.getThemeHeight());
+        this.setSize(STTheme.getWidth(), STTheme.getHeight());
         this.setVisible(true);
     }
 
@@ -65,5 +65,6 @@ public class STNotificationWindow extends JComponent
         g2d.drawImage(texture, 0, 0, this);
         g2d.drawImage(type, 0, 0, this);
         g2d.dispose();
+        //repaint();
     }
 }

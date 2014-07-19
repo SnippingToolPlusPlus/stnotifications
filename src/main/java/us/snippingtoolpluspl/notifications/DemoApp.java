@@ -19,11 +19,11 @@ public class DemoApp
                 @Override
                 public void actionPerformed(ActionEvent arg0)
                 {
-                    JOptionPane.showMessageDialog(null, "Pressed Button");
+                    System.out.println("Clicked");
                 }
             });
         }
-        new STNotification("TITLE TEXT", "This is a sample message that could really be anything", buttons, STNotificationType.SUCCESS);
+        new STNotification("Uploading...", "This is a sample message that could really be anything", buttons, STNotificationType.SUCCESS);
     }
 
     public static void main(String[] args)
