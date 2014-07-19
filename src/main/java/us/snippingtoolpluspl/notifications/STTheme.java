@@ -12,6 +12,10 @@ import javax.swing.JFrame;
  *         This class will be used to pull the root theme directory from a preferences file. This will need to be changed by the user.
  * 
  *         For now it will simply point to the default theme location
+ *         
+ *         Everything is set to default values. when this class is finished, 
+ *         it will pull the values from a config file located in the theme
+ *         directory.
  * 
  */
 public class STTheme
