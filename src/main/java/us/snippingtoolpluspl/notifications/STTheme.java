@@ -25,17 +25,17 @@ public class STTheme
 {
     public static String getRootPath()
     {
-        return "src/main/resources/themes/default/";
+        return "src/main/resources/themes/cloudy/";
     }
 
     public static int getHeight()
     {
-        return 110;
+        return 252;
     }
 
     public static int getWidth()
     {
-        return 250;
+        return 344;
     }
     public static int getButtonWidth()
     {

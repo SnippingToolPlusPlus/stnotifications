@@ -30,36 +30,43 @@ public class STNotification extends JFrame
     private JTextArea messageBox;
     private JLabel titleLabel;
     
-    public STNotification(String title, String message, STNotificationButton[] buttons, STNotificationType type)
+    public STNotification(String title, String message, STNotificationButton[] buttons, STNotificationType type, STNotificationTitle imgTitle)
     {
         this.setType(Type.UTILITY);
         windowPanel = new JPanel(new BorderLayout());
         compPanel = new RepaintPanel(null);
         
-        /** TITLE **/
-        titleLabel = new JLabel(title);
-        titleLabel.setForeground(STTheme.getTitleColor());
-        titleLabel.setLocation(STTheme.getTitleLocation());
-        titleLabel.setFont(new Font("sansserif", Font.PLAIN, STTheme.getTitleFontSize()));
-        titleLabel.setSize(STTheme.getTitleSize());
-        
-        /** MESSAGE **/
-        messageBox = new JTextArea(message);
-        messageBox.setForeground(STTheme.getMessageColor());
-        messageBox.setBackground(new Color(0,0,0,0));
-        messageBox.setEditable(false);
-        messageBox.setEnabled(false);
-        messageBox.setLineWrap(true);
-        messageBox.setWrapStyleWord(true);
-        messageBox.setFont(new Font("Arial", Font.PLAIN, STTheme.getMessageFontSize()));
+        if(imgTitle == STNotificationTitle.NONE)
+        {
+            /** TITLE **/
+            titleLabel = new JLabel(title);
+            titleLabel.setForeground(STTheme.getTitleColor());
+            titleLabel.setLocation(STTheme.getTitleLocation());
+            titleLabel.setFont(new Font("sansserif", Font.PLAIN, STTheme.getTitleFontSize()));
+            titleLabel.setSize(STTheme.getTitleSize());
+            compPanel.add(titleLabel);
+            
+            /** MESSAGE **/
+            messageBox = new JTextArea(message);
+            messageBox.setForeground(STTheme.getMessageColor());
+            messageBox.setBackground(new Color(0,0,0,0));
+            messageBox.setEditable(false);
+            messageBox.setEnabled(false);
+            messageBox.setLineWrap(true);
+            messageBox.setWrapStyleWord(true);
+            messageBox.setFont(new Font("Arial", Font.PLAIN, STTheme.getMessageFontSize()));
+        }
         
         if(buttons != null)
         {
-            /** MESSAGE **/
-            messageBox.setLocation(STTheme.getActiveMessageLocation());
-            messageBox.setSize(STTheme.getActiveMessageSize());
+            if(imgTitle == STNotificationTitle.NONE)
+            {
+                /** MESSAGE **/
+                messageBox.setLocation(STTheme.getActiveMessageLocation());
+                messageBox.setSize(STTheme.getActiveMessageSize());
+            }
             
-            window = new STNotificationWindow(type, true);
+            window = new STNotificationWindow(type, imgTitle, true);
             windowPanel.add(window);         
             
             
@@ -73,13 +80,17 @@ public class STNotification extends JFrame
         }
         else
         {
-            /** MESSAGE **/
-            messageBox.setLocation(STTheme.getMessageLocation());
-            messageBox.setSize(STTheme.getMessageSize());
-            
+            if(imgTitle == STNotificationTitle.NONE)
+            {
+                /** MESSAGE **/
+                messageBox.setLocation(STTheme.getMessageLocation());
+                messageBox.setSize(STTheme.getMessageSize());
+            }
+            window = new STNotificationWindow(type, imgTitle, false);
+            windowPanel.add(window); 
         }
-        compPanel.add(titleLabel);
-        compPanel.add(messageBox);
+        if(imgTitle == STNotificationTitle.NONE)
+            compPanel.add(messageBox);
         
         compPanel.setBackground(new Color(0,0,0,0));
         windowPanel.add(compPanel, BorderLayout.CENTER);
@@ -88,6 +99,7 @@ public class STNotification extends JFrame
         this.setLocation(STTheme.getScreenLocationX(this), STTheme.getScreenLocationY(this));
         this.setUndecorated(true);
         this.setVisible(true);
+        this.setBackground(new Color(0, 0, 0, 0));
     }
     public class RepaintPanel extends JPanel
     {

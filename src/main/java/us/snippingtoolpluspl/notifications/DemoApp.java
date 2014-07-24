@@ -23,7 +23,7 @@ public class DemoApp
                 }
             });
         }
-        new STNotification("Uploading...", "This is a sample message that could really be anything", buttons, STNotificationType.SUCCESS);
+        new STNotification("Uploading...", "This is a sample message that could really be anything", null, STNotificationType.SUCCESS, STNotificationTitle.TITLE_1);
     }
 
     public static void main(String[] args)
