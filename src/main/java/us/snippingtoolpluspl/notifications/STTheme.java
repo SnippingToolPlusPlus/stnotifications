@@ -118,7 +118,7 @@ public class STTheme
 
     public static int getScreenLocationX(JFrame w)
     {
-        return Toolkit.getDefaultToolkit().getScreenSize().width - getWidth();
+        return Toolkit.getDefaultToolkit().getScreenSize().width;
     }
 
 }

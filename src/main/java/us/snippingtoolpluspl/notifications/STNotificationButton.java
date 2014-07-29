@@ -19,22 +19,22 @@ public class STNotificationButton extends JButton
 {
     public final int ACTIVE = 0;
     public final int CLOSE = 1;
-    
+
     private int type;
     private String text;
-    
+
     private String texturePath = STTheme.getRootPath();
-    
-    private ImageIcon hover; 
+
+    private ImageIcon hover;
     private ImageIcon normal;
     private ImageIcon pressed;
-    
+
     public STNotificationButton(int type, String text)
     {
         this.type = type;
         this.text = text;
-        
-        switch(type)
+
+        switch (type)
         {
         case ACTIVE:
             texturePath += "button/";
@@ -45,32 +45,32 @@ public class STNotificationButton extends JButton
             texturePath += "close/";
             break;
         }
-        hover = new ImageIcon(Toolkit.getDefaultToolkit().getImage(texturePath+"hover.png"));
-        normal = new ImageIcon(Toolkit.getDefaultToolkit().getImage(texturePath+"normal.png"));
-        pressed = new ImageIcon(Toolkit.getDefaultToolkit().getImage(texturePath+"pressed.png"));
-        
-        
+        hover = new ImageIcon(Toolkit.getDefaultToolkit().getImage(texturePath + "hover.png"));
+        normal = new ImageIcon(Toolkit.getDefaultToolkit().getImage(texturePath + "normal.png"));
+        pressed = new ImageIcon(Toolkit.getDefaultToolkit().getImage(texturePath + "pressed.png"));
+
         setRolloverIcon(hover);
         setIcon(normal);
         setPressedIcon(pressed);
         setRolloverEnabled(true);
-        
+
         setBorderPainted(false);
         setFocusPainted(false);
         setOpaque(false);
         setContentAreaFilled(false);
         setFocusable(false);
-        
+
         enableInputMethods(true);
-        
+
         setHorizontalTextPosition(JButton.CENTER);
         setVerticalTextPosition(JButton.CENTER);
         setMargin(new Insets(0, 0, 0, 0));
         setText(text);
-        
+
         setVisible(true);
         repaint();
     }
+
     public void paintComponents(Graphics g)
     {
         super.paintComponent(g);

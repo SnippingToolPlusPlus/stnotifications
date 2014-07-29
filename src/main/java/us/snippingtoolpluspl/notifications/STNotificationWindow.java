@@ -26,13 +26,13 @@ public class STNotificationWindow extends JComponent
     private Image titleImage;
 
     private ImageIcon icon;
-    
+
     private STNotificationTitle title;
-    
+
     public STNotificationWindow(STNotificationType t, STNotificationTitle title, boolean buttons)
     {
         this.title = title;
-        
+
         if (buttons == false)
             texturePath += "basic.png";
         else
@@ -63,10 +63,10 @@ public class STNotificationWindow extends JComponent
         case NONE:
             break;
         case TITLE_0:
-            titleImage = Toolkit.getDefaultToolkit().getImage(titlePath + "0.png"); 
+            titleImage = Toolkit.getDefaultToolkit().getImage(titlePath + "0.png");
             break;
         case TITLE_1:
-            titleImage = Toolkit.getDefaultToolkit().getImage(titlePath + "1.png"); 
+            titleImage = Toolkit.getDefaultToolkit().getImage(titlePath + "1.png");
             break;
         case TITLE_2:
             titleImage = Toolkit.getDefaultToolkit().getImage(titlePath + "2.png");
@@ -78,7 +78,7 @@ public class STNotificationWindow extends JComponent
         }
         texture = Toolkit.getDefaultToolkit().getImage(texturePath);
         type = Toolkit.getDefaultToolkit().getImage(typePath);
-        
+
         this.setOpaque(true);
         this.setBackground(new Color(0, 0, 0, 0));
         this.setSize(STTheme.getWidth(), STTheme.getHeight());
@@ -90,7 +90,7 @@ public class STNotificationWindow extends JComponent
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setComposite(java.awt.AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
-        if(title == STNotificationTitle.NONE)
+        if (title == STNotificationTitle.NONE)
         {
             g2d.drawImage(texture, 0, 0, this);
             g2d.drawImage(type, 0, 0, this);
@@ -101,7 +101,7 @@ public class STNotificationWindow extends JComponent
             g2d.drawImage(type, 0, 0, this);
             g2d.drawImage(titleImage, 0, 0, this);
         }
-        
+
         g2d.dispose();
         repaint();
     }
