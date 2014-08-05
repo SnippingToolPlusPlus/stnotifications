@@ -52,19 +52,19 @@ public class STNotificationQueue implements Runnable
             next = queue.poll();
             next.setVisible(true);
 
-            int start = next.getLocation().x;
+            int start = next.getLocation().y;
 
             try
             {
-                while (next.getLocation().x > (start - travelDistance))
+                while (next.getLocation().y > (start - travelDistance))
                 {
-                    next.setLocation(next.getLocation().x - 1, next.getY());
+                    next.setLocation(next.getX(), next.getLocation().y - 1);
                     Thread.sleep(20 - rate);
                 }
                 Thread.sleep(pauseTime);
-                while (next.getLocation().x < start)
+                while (next.getLocation().y < start)
                 {
-                    next.setLocation(next.getLocation().x + 1, next.getY());
+                    next.setLocation(next.getX(), next.getLocation().y + 1);
                     Thread.sleep(20 - rate);
                 }
                 next.dispose();

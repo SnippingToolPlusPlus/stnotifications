@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class DemoApp
 {
     STNotificationButton[] buttons = new STNotificationButton[3];
-    STNotificationQueue queue = new STNotificationQueue(1000, STTheme.getWidth(), 17);
+    STNotificationQueue queue = new STNotificationQueue(1000, STTheme.getHeightAboveTaskbar(), 17);
     STNotification notification;
 
     public DemoApp()

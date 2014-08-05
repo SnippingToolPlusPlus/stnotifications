@@ -2,8 +2,9 @@ package us.snippingtoolpluspl.notifications;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Insets;
+import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -107,18 +108,30 @@ public class STTheme
     }
     public static int getScreenLocationY(JFrame w)
     {
-        Insets screenMax = Toolkit.getDefaultToolkit().getScreenInsets(w.getGraphicsConfiguration());
+//        Insets screenMax = Toolkit.getDefaultToolkit().getScreenInsets(w.getGraphicsConfiguration());
+//
+//        // Set it to the bottom right of the screen below the task tray;
+//        int taskbarSize = screenMax.bottom;
+//        int taskbarYlocation = Toolkit.getDefaultToolkit().getScreenSize().height - taskbarSize;
 
-        // Set it to the bottom right of the screen above the task tray;
-        int taskbarSize = screenMax.bottom;
-        int taskbarYlocation = Toolkit.getDefaultToolkit().getScreenSize().height - taskbarSize;
-
-        return taskbarYlocation - getHeight();
+ //       return taskbarYlocation - getHeight();
+        
+        int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+        
+        return screenHeight;
     }
 
     public static int getScreenLocationX(JFrame w)
     {
-        return Toolkit.getDefaultToolkit().getScreenSize().width;
+        return Toolkit.getDefaultToolkit().getScreenSize().width - getWidth();
+    }
+    public static int getHeightAboveTaskbar()
+    {
+        Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Rectangle taskSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+        
+        int taskHeight = scrnSize.height - taskSize.height;
+        return taskHeight + getHeight();
     }
 
 }
