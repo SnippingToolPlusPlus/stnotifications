@@ -50,8 +50,9 @@ public class STNotificationQueue implements Runnable
         while (!queue.isEmpty())
         {
             next = queue.poll();
+            next.setAutoRequestFocus(false);
+            next.setAlwaysOnTop(true);
             next.setVisible(true);
-
             int start = next.getLocation().y;
 
             try

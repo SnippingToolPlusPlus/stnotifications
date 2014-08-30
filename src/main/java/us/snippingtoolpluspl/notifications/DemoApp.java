@@ -13,6 +13,14 @@ public class DemoApp
 
     public DemoApp()
     {
+        System.out.println("Waiting to add to queue...");
+        try
+        {
+            Thread.sleep(2000);
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
         for (int i = 0; i < 3; i++)
         {
             buttons[i] = new STNotificationButton(0, "Button " + i);

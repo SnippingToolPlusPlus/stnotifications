@@ -5,7 +5,7 @@ apply plugin: 'maven'
 apply plugin: 'sonar-runner'
 
 sourceCompatibility = 1.7
-project.version = '1.0.0'
+project.version = '1.0.1'
 
 jar {
 
