@@ -28,83 +28,15 @@ public class STTheme
     {
         return "src/main/resources/themes/cloudy/";
     }
-
     public static int getHeight()
     {
-        return 252;
+    	int height = Toolkit.getDefaultToolkit().getImage(getRootPath()+"/window/window.png").getHeight(null);
+    	return height;
     }
-
     public static int getWidth()
     {
-        return 344;
-    }
-    public static int getButtonWidth()
-    {
-        return 60;
-    }
-    public static int getButtonHeight()
-    {
-        return 20;
-    }
-    public static int getButtonMarginLeft()
-    {
-        return 30;
-    }
-    public static int getButtonMargin()
-    {
-        return 5;
-    }
-    public static int getButtonWindowHeight()
-    {
-        return 75;
-    }
-    public static int getCloseWidth()
-    {
-        return 20;
-    }
-    public static int getCloseHeight()
-    {
-        return 15;
-    }
-    public static Point getTitleLocation()
-    {
-        return new Point(5,4);
-    }
-    public static Dimension getTitleSize()
-    {
-        return new Dimension(getWidth(), 18);
-    }
-    public static int getTitleFontSize()
-    {
-        return 18;
-    }
-    public static Color getTitleColor()
-    {
-        return Color.black;
-    }
-    public static Point getMessageLocation()
-    {
-        return new Point(22,32);
-    }
-    public static Point getActiveMessageLocation()
-    {
-        return new Point(22,32);
-    }
-    public static Dimension getActiveMessageSize()
-    {
-        return new Dimension(210,40);
-    }
-    public static Dimension getMessageSize()
-    {
-        return new Dimension(210, 40);
-    }
-    public static int getMessageFontSize()
-    {
-        return 14;
-    }
-    public static Color getMessageColor()
-    {
-        return Color.lightGray;
+    	int width = Toolkit.getDefaultToolkit().getImage(getRootPath() + "/window/window.png").getWidth(null);
+    	return width;
     }
     public static int getScreenLocationY(JFrame w)
     {
@@ -125,13 +57,22 @@ public class STTheme
     {
         return Toolkit.getDefaultToolkit().getScreenSize().width - getWidth();
     }
-    public static int getHeightAboveTaskbar()
+    public static int getTaskbarHeight()
     {
         Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize();
         Rectangle taskSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         
         int taskHeight = scrnSize.height - taskSize.height;
-        return taskHeight + getHeight();
+        return taskHeight;
+    }
+    public static int getTravelDistance()
+    {
+    	return getTaskbarHeight() + getHeight();
+    }
+    public static int getTravelLocation()
+    {
+    	int scrnHeight = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
+    	return scrnHeight - getTravelDistance();
     }
 
 }

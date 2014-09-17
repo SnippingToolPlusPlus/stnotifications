@@ -27,19 +27,13 @@ public class STNotificationWindow extends JComponent
 
     private ImageIcon icon;
 
-    private STNotificationTitle title;
+    private String title;
 
-    public STNotificationWindow(STNotificationType t, STNotificationTitle title, boolean buttons)
+    public STNotificationWindow(STNotificationType t, String title)
     {
         this.title = title;
 
-        if (buttons == false)
-            texturePath += "basic.png";
-        else
-        {
-            texturePath += "interactive.png";
-        }
-
+        texturePath += "basic.png";
         switch (t)
         {
         case INFO:
@@ -58,24 +52,8 @@ public class STNotificationWindow extends JComponent
             typePath += "success.png";
             break;
         }
-        switch (title)
-        {
-        case NONE:
-            break;
-        case TITLE_0:
-            titleImage = Toolkit.getDefaultToolkit().getImage(titlePath + "0.png");
-            break;
-        case TITLE_1:
-            titleImage = Toolkit.getDefaultToolkit().getImage(titlePath + "1.png");
-            break;
-        case TITLE_2:
-            titleImage = Toolkit.getDefaultToolkit().getImage(titlePath + "2.png");
-            break;
-        case TITLE_3:
-            break;
-        default:
-            break;
-        }
+        
+        titleImage = Toolkit.getDefaultToolkit().getImage(titlePath + title+".png");
         texture = Toolkit.getDefaultToolkit().getImage(texturePath);
         type = Toolkit.getDefaultToolkit().getImage(typePath);
 
@@ -90,7 +68,7 @@ public class STNotificationWindow extends JComponent
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setComposite(java.awt.AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
-        if (title == STNotificationTitle.NONE)
+        if (title == null)
         {
             g2d.drawImage(texture, 0, 0, this);
             g2d.drawImage(type, 0, 0, this);

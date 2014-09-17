@@ -36,14 +36,14 @@ public class STNotificationButton extends JButton
 
         switch (type)
         {
-        case ACTIVE:
-            texturePath += "button/";
-            this.setSize(STTheme.getButtonWidth(), STTheme.getButtonHeight());
-            break;
-        case CLOSE:
-            this.setSize(STTheme.getCloseWidth(), STTheme.getCloseHeight());
-            texturePath += "close/";
-            break;
+//        case ACTIVE:
+//            texturePath += "button/";
+//            this.setSize(STTheme.getButtonWidth(), STTheme.getButtonHeight());
+//            break;
+//        case CLOSE:
+//            this.setSize(STTheme.getCloseWidth(), STTheme.getCloseHeight());
+//            texturePath += "close/";
+//            break;
         }
         hover = new ImageIcon(Toolkit.getDefaultToolkit().getImage(texturePath + "hover.png"));
         normal = new ImageIcon(Toolkit.getDefaultToolkit().getImage(texturePath + "normal.png"));
