@@ -18,15 +18,15 @@ public class DemoApp
         //queue.add(notification);
         queue = new STNotificationQueue(1000, 17);
         
-        notification = new STNotification("2", STNotificationType.ERROR);
+        notification = new STNotification("upload-failed", STNotificationType.ERROR);
         queue.add(notification);
         notification = new STNotification("uploading",STNotificationType.INFO);
         queue.add(notification);        
         notification = new STNotification("uploading",STNotificationType.INFO);
         queue.add(notification);
-        notification = new STNotification("2", STNotificationType.ERROR);
+        notification = new STNotification("upload-failed", STNotificationType.ERROR);
         queue.add(notification);
-        notification = new STNotification("1",STNotificationType.SUCCESS);
+        notification = new STNotification("upload-done",STNotificationType.SUCCESS);
         queue.add(notification);
 
         System.out.println("Added all notifications to the queue!");

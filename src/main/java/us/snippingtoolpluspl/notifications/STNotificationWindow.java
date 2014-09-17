@@ -33,7 +33,7 @@ public class STNotificationWindow extends JComponent
     {
         this.title = title;
 
-        texturePath += "basic.png";
+        texturePath += "window.png";
         switch (t)
         {
         case INFO:
