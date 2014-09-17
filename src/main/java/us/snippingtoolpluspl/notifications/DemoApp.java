@@ -1,10 +1,5 @@
 package us.snippingtoolpluspl.notifications;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JOptionPane;
-
 public class DemoApp
 {
     STNotificationQueue queue;
@@ -12,24 +7,25 @@ public class DemoApp
 
     public DemoApp()
     {
-        System.out.println("Waiting to add to queue...");
-//        notification = new STNotification("0", STNotificationType.INFO);
-//        queue.add(notification);
-        //queue.add(notification);
+    	/* Sets the theme to be used */
+    	STTheme.setThemePath("src/main/resources/themes/cloudy/");
+    	
+    	/* create the notification queue and set the pause and speed */
         queue = new STNotificationQueue(1000, 17);
         
+        /* create a new notification object */
         notification = new STNotification("upload-failed", STNotificationType.ERROR);
+        
+        /* add the notification to the queue, it will then be queued for display */
         queue.add(notification);
-        notification = new STNotification("uploading",STNotificationType.INFO);
-        queue.add(notification);        
-        notification = new STNotification("uploading",STNotificationType.INFO);
+        
+        /* if you need to add more notifications, it's as simple as.. */
+        notification = new STNotification("upload-done", STNotificationType.SUCCESS);
         queue.add(notification);
-        notification = new STNotification("upload-failed", STNotificationType.ERROR);
-        queue.add(notification);
-        notification = new STNotification("upload-done",STNotificationType.SUCCESS);
-        queue.add(notification);
-
-        System.out.println("Added all notifications to the queue!");
+        
+        /* And then the notification will be displayed as soon as every notification before
+         * it has finished displaying.
+         */
 
     }
 

@@ -28,7 +28,10 @@ public class STNotificationQueue implements Runnable
         if (this.rate > 20)
             rate = 20;
 
-        thread = new Thread(this);
+    }
+    public int getSize()
+    {
+    	return queue.size();
     }
 
     public void add(STNotification n)
@@ -36,12 +39,15 @@ public class STNotificationQueue implements Runnable
         queue.add(n);
 
         if (!running)
-            thread.start();
+        {
+        	running = true;
+        	thread = new Thread(this);
+        	thread.start();
+        }
     }
 
     public void run()
     {
-        running = true;
         while (!queue.isEmpty())
         {
             STNotification next = queue.poll();
@@ -50,8 +56,6 @@ public class STNotificationQueue implements Runnable
             next.setVisible(true);
             int start = next.getLocation().y;
             int travelLocation = STTheme.getTravelLocation();
-            
-            System.out.println("Start: "+start +" TravelLocation: "+travelLocation);
             
             try
             {

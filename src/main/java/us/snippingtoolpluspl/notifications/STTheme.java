@@ -1,11 +1,15 @@
 package us.snippingtoolpluspl.notifications;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
-import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 
 import javax.swing.JFrame;
 
@@ -24,19 +28,61 @@ import javax.swing.JFrame;
  */
 public class STTheme
 {
+	private static String themePath = "src/main/resources/themes/cloudy/";
+	private static int width;
+	private static int height;
+	
+	public static void configure()
+	{
+		/**
+		 * Loads the config file
+		 */
+		
+		String line;
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(getRootPath()+"config.txt")));
+			while((line = reader.readLine()) != null)
+			{
+				String split[] = line.split("=");
+				
+				if(split[0].equals("width"))
+					setWidth(Integer.parseInt(split[1]));
+				else if(split[0].equals("height"))
+					setHeight(Integer.parseInt(split[1]));
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
     public static String getRootPath()
     {
-        return "src/main/resources/themes/cloudy/";
+        return themePath;
+    }
+    public static void setThemePath(String path)
+    {
+    	themePath = path;
+    	configure();
     }
     public static int getHeight()
     {
-    	int height = Toolkit.getDefaultToolkit().getImage(getRootPath()+"/window/window.png").getHeight(null);
     	return height;
     }
     public static int getWidth()
     {
-    	int width = Toolkit.getDefaultToolkit().getImage(getRootPath() + "/window/window.png").getWidth(null);
     	return width;
+    }
+    private static void setWidth(int w)
+    {
+    	STTheme.width = w;
+    }
+    private static void setHeight(int h)
+    {
+    	STTheme.height = h;
     }
     public static int getScreenLocationY(JFrame w)
     {

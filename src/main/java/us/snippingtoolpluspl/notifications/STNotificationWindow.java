@@ -25,8 +25,6 @@ public class STNotificationWindow extends JComponent
     private Image type;
     private Image titleImage;
 
-    private ImageIcon icon;
-
     private String title;
 
     public STNotificationWindow(STNotificationType t, String title)
@@ -59,10 +57,11 @@ public class STNotificationWindow extends JComponent
 
         this.setOpaque(true);
         this.setBackground(new Color(0, 0, 0, 0));
-        this.setSize(STTheme.getWidth(), STTheme.getHeight());
+        this.setSize(271, 179);
         this.setVisible(true);
     }
 
+    @Override
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
@@ -79,8 +78,6 @@ public class STNotificationWindow extends JComponent
             g2d.drawImage(type, 0, 0, this);
             g2d.drawImage(titleImage, 0, 0, this);
         }
-
         g2d.dispose();
-        repaint();
     }
 }
