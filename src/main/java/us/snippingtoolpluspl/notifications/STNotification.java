@@ -14,10 +14,12 @@ public class STNotification extends JFrame
     private JPanel compPanel;
 
     private STNotificationWindow window;
+    private boolean alive;
 
     public STNotification(String imgTitle, STNotificationType type)
     {
         this.setType(Type.UTILITY);
+        this.alive = true;
         windowPanel = new JPanel(new BorderLayout());
         compPanel = new RepaintPanel(null);
 
@@ -35,6 +37,16 @@ public class STNotification extends JFrame
         this.setBackground(new Color(0, 0, 0, 0));
     }
 
+    public boolean isAlive()
+    {
+        return alive;
+    }
+    @Override
+    public void dispose()
+    {
+        alive = false;
+        super.dispose();
+    }
     public class RepaintPanel extends JPanel
     {
         public RepaintPanel(LayoutManager m)

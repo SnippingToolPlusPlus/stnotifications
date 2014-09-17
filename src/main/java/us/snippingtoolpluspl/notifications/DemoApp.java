@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 public class DemoApp
 {
     STNotificationQueue queue;
-    STNotification notification;
+    STNotification notification, clickNotification;
 
     public DemoApp()
     {
@@ -14,7 +14,7 @@ public class DemoApp
         STTheme.setThemePath("src/main/resources/themes/cloudy/");
 
         /* create the notification queue and set the pause and speed */
-        queue = new STNotificationQueue(1000, 17);
+        queue = new STNotificationQueue(3000, 17);
 
         /* create a new notification object */
         notification = new STNotification("upload-failed", STNotificationType.ERROR);
@@ -33,8 +33,8 @@ public class DemoApp
         /* You can also add on click events to them! When clicked, this next notification
          * will show a JOptionPane. 
          */
-        notification = new STNotification("saved", STNotificationType.WARNING);
-        notification.addMouseListener(new MouseListener()
+        clickNotification = new STNotification("saved", STNotificationType.WARNING);
+        clickNotification.addMouseListener(new MouseListener()
         {
             public void mouseReleased(MouseEvent e)
             {
@@ -54,10 +54,13 @@ public class DemoApp
 
             public void mouseClicked(MouseEvent e)
             {
-                notification.dispose();
+                clickNotification.dispose();
             }
         });
 
+        queue.add(clickNotification);
+        
+        notification = new STNotification("upload-done", STNotificationType.SUCCESS);
         queue.add(notification);
     }
 
