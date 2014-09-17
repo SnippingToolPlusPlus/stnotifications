@@ -5,10 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.RenderingHints;
 import java.awt.Toolkit;
 
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 
 /**
@@ -50,8 +48,8 @@ public class STNotificationWindow extends JComponent
             typePath += "success.png";
             break;
         }
-        
-        titleImage = Toolkit.getDefaultToolkit().getImage(titlePath + title+".png");
+
+        titleImage = Toolkit.getDefaultToolkit().getImage(titlePath + title + ".png");
         texture = Toolkit.getDefaultToolkit().getImage(texturePath);
         type = Toolkit.getDefaultToolkit().getImage(typePath);
 
