@@ -14,7 +14,7 @@ public class DemoApp
         STTheme.setThemePath("src/main/resources/themes/cloudy/");
 
         /* create the notification queue and set the pause and speed */
-        queue = new STNotificationQueue(3000, 17);
+        queue = new STNotificationQueue(1000, 17);
 
         /* create a new notification object */
         notification = new STNotification("upload-failed", STNotificationType.ERROR);
