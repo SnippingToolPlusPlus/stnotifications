@@ -38,8 +38,8 @@ public class STTheme
         String line;
         try
         {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(getRootPath()
-                + "config.txt")));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(STTheme.class.getResourceAsStream(getRootPath()
+                + "/config.txt")));
             while ((line = reader.readLine()) != null)
             {
                 String split[] = line.split("=");

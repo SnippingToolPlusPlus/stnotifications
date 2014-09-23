@@ -4,9 +4,10 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
 /**
@@ -19,9 +20,9 @@ public class STNotificationWindow extends JComponent
     private String typePath = STTheme.getRootPath() + "/type/";
     private String titlePath = STTheme.getRootPath() + "/titles/";
 
-    private Image texture;
-    private Image type;
-    private Image titleImage;
+    private BufferedImage texture;
+    private BufferedImage type;
+    private BufferedImage titleImage;
 
     private String title;
 
@@ -49,9 +50,17 @@ public class STNotificationWindow extends JComponent
             break;
         }
 
-        titleImage = Toolkit.getDefaultToolkit().getImage(titlePath + title + ".png");
-        texture = Toolkit.getDefaultToolkit().getImage(texturePath);
-        type = Toolkit.getDefaultToolkit().getImage(typePath);
+       
+        try
+        {
+            type = ImageIO.read(this.getClass().getResourceAsStream(typePath));
+            titleImage = ImageIO.read(this.getClass().getResourceAsStream(titlePath + title + ".png"));
+            texture = ImageIO.read(this.getClass().getResourceAsStream(texturePath));
+        } catch (IOException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
         this.setOpaque(true);
         this.setBackground(new Color(0, 0, 0, 0));
