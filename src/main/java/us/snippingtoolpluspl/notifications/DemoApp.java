@@ -11,7 +11,7 @@ public class DemoApp
     public DemoApp()
     {
         /* Sets the theme to be used */
-        STTheme.setThemePath("/themes/cloudy");
+    	STTheme.setThemePath("/resources/themes/cloudy");
 
         /* create the notification queue and set the pause and speed */
         queue = new STNotificationQueue(17);
